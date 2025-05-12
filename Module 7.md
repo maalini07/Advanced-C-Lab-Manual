@@ -15,14 +15,34 @@ Else
 6.	Return 0
  
 Program:
-
-//type your code here
-
+#include <stdio.h>
+struct eligible 
+{
+    int age;
+    char n[50];
+};
+int main() 
+{
+    struct eligible e;
+    printf("Enter name: ");
+    scanf("%s", e.n);
+    printf("Enter age: ");
+    scanf("%d", &e.age);
+    if (e.age <= 6) 
+    {
+        printf("Vaccine Eligibility: No\n");
+    } 
+    else 
+    {
+        printf("Vaccine Eligibility: Yes\n");
+    }
+    printf("Name: %s\n", e.n);
+    printf("Age: %d\n", e.age);
+    return 0;
+}
 
 Output:
-
-//paste your output here
-
+![image](https://github.com/user-attachments/assets/6c68b67c-9b15-43f6-b7ea-500e1a6d1004)
 
 Result:
 Thus, the program is verified successfully. 
@@ -43,19 +63,31 @@ Algorithm:
 7.	Return 0
  
 Program:
-
-//type your code here
-
-
-
+#include <stdio.h>
+struct numbers 
+{
+    int a;
+    int b;
+};
+struct numbers add(struct numbers n) 
+{
+    struct numbers result;
+    result.a = n.a + n.b;
+    result.b = 0; 
+    return result;
+}
+int main()
+{
+    struct numbers n, sum;
+    scanf("%d", &n.a);
+    scanf("%d", &n.b);
+    sum = add(n);
+    printf("Sum = %d\n", sum.a);
+    return 0;
+}
 
 Output:
-
-
-//paste your output here
-
-
-
+![image](https://github.com/user-attachments/assets/78b51bfc-613f-4934-b203-6f7db2488026)
 
 Result:
 Thus, the program is verified successfully
@@ -85,26 +117,30 @@ Use scanf to input the file name into the name array.
 5.	Return 0 to indicate successful program execution.
  
 Program:
+#include <stdio.h>
 
-//type your code here
-
+int main() {
+    FILE *p;
+    char name[100];
+    printf("Enter the file name to create: ");
+    scanf("%s", name);
+    p = fopen(name, "w");
+    if (p == NULL) 
+    {
+        perror("Error");
+        return 1;
+    }
+    printf("File '%s' opened successfully.\n", name);
+    fclose(p);
+    printf("File '%s' closed successfully.\n", name);
+    return 0;
+}
 
 
 
 Output:
 
-
-//paste your output here
-
-
-
-
-
-
-
-
-
-
+![image](https://github.com/user-attachments/assets/9e93f901-1a93-4ba9-8b1f-a1b4bc273ee6)
 
 Result:
 Thus, the program is verified successfully
@@ -132,21 +168,35 @@ Use scanf to input the file name into the name array and the number of strings i
 5.	Return 0 to indicate successful program execution.
  
 Program:
+#include <stdio.h>
 
-//type your code here
-
-
-
+int main() {
+    FILE *p;
+    char name[100], text[200];
+    int num;
+    scanf("%s", name);
+    scanf("%d", &num);
+    p = fopen(name, "w");
+    if (p == NULL)
+    {
+        printf("Error: Unable to open or create the file.\n");
+        return 1;
+    }
+    printf("File '%s' opened successfully.\n", name);
+    for (int i = 0; i < num; i++) 
+    {
+        printf("Enter string %d: ", i + 1);
+        getchar();
+        fgets(text, sizeof(text), stdin);
+        fputs(text, p);
+    }
+    fclose(p);
+    printf("Data added successfully to the file '%s'.\n", name);
+    return 0;
+}
 
 Output:
-
-
-//paste your output here
-
-
-
-
-
+![image](https://github.com/user-attachments/assets/54390204-e5ff-4884-9121-ffacd3daeb28)
 
 Result:
 Thus, the program is verified successfully
@@ -186,19 +236,38 @@ Algorithm:
 13.End the program by returning 0.
 
 Program:
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+struct Subject {
+    char name[50];
+    int marks;
+};
 
-
-
+int main() {
+    int n;
+    printf("Enter the number of subjects: ");
+    scanf("%d", &n);
+    struct Subject *s = (struct Subject *)malloc(n * sizeof(struct Subject));\
+    if (s == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+    for (int i = 0; i < n; i++) {
+        printf("Enter name and marks for subject %d: ", i + 1);
+        scanf("%s %d", s[i].name, &s[i].marks);
+    }
+    printf("\nSubject Details:\n");
+    for (int i = 0; i < n; i++) {
+        printf("Subject %d: Name = %s, Marks = %d\n", i + 1, s[i].name, s[i].marks);
+    }
+    free(s);
+    return 0;
+}
 
 Output:
 
-
-//paste your output here
-
-
-
+![image](https://github.com/user-attachments/assets/34697ae7-131b-4d1f-85ee-e30730e461d1)
 
 
 
