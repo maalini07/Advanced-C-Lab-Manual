@@ -15,20 +15,59 @@ Algorithm:
 4.	Exit the program.
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main() {
 
+int n;
+scanf("%d", &n);
+
+
+switch (n) {
+    case 5:
+        printf("seventy one\n");
+        break;
+    case 6:
+        printf("seventy two\n");
+        break;
+    case 13:
+        printf("seventy three\n");
+        break;
+    case 7:
+        printf("seventy four\n");
+        break;
+    case 8:
+        printf("seventy five\n");
+        break;
+    case 9:
+        printf("seventy six\n");
+        break;
+    case 10:
+        printf("seventy seven\n");
+        break;
+    case 11:
+        printf("seventy eight\n");
+        break;
+    case 12:
+        printf("seventy nine\n");
+        break;
+    default:
+        printf("Greater than 13\n");
+        break;
+}
+
+
+return 0;
+}
+
+```
 
 
 
 Output:
 
-
-//paste your output here
-
-
-
-
+![image](https://github.com/user-attachments/assets/91b95a88-93ab-4bfd-b708-aa4552422048)
 
 
 Result:
@@ -46,20 +85,35 @@ Algorithm:
 6.	End
  
 Program:
+```
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char s[100];
+    int freq[10]={0};
+    scanf("%s",s);
+    for(int i=0;s[i]!=0;i++)
+    {
+        if(s[i]>='0' && s[i]<='9')
+        {
+            freq[s[i]-'0']++;
+        }
+    }
+    for(int i=0;i<10;i++)
+    {
+        printf("%d ",freq[i]);
+    }
+}
 
-//type your code here
+```
+
 
 
 
 
 Output:
-
-
-//paste your output here
-
-
-
-
+![image](https://github.com/user-attachments/assets/6d4a9000-167b-4297-b3bd-28bdb4087cc6)
 
 
 Result:
@@ -83,20 +137,69 @@ Free the memory allocated for each string in s Free the memory allocated for s
 7.	End
  
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int next(int n, char **s)
+{
+    int k = -1;
+    for(int i = 0; i < n -1; i++)
+    {
+        if(strcmp(s[i], s[i+1] )< 0)
+        k = i;
+    }
+    if(k == -1)
+    return 0;
+    int l = -1;
+    for(int i = k + 1; i < n; i++)
+    {
+        if(strcmp(s[k], s[i]) < 0)
+        l = i;
+    }
+    char *tmp = s[k];
+    s[k] = s[l];
+    s[l] = tmp;
+    int i = k +1, j = n-1;
+    while(i < j)
+    {
+        tmp = s[i];
+        s[i++] = s[j];
+        s[j--] = tmp;
+    }
+    return 1;
+}
+int main()
+{
+    char **s;
+    int n;
+    scanf("%d",&n);
+    s = calloc(n, sizeof(char*));
+    for(int i = 0; i < n; i++)
+    {
+        s[i] = calloc(11, sizeof(char));
+        scanf("%s",s[i]);
+    }
+    do
+    {
+        for(int i = 0; i < n; i++)
+        printf("%s%c",s[i] , i == n - 1 ? '\n' : ' ');
+   }
+   while(next(n,s));
+   for(int i = 0; i < n; i++)
+   free(s[i]);
+   free(s);
+   return 0;
+}
+```
 
-//type your code here
+
 
 
 
 
 Output:
-
-
-//paste your output here
-
-
-
-
+![image](https://github.com/user-attachments/assets/81d73f51-d9b4-407b-906c-7b4f3aa0fed1)
 
 
 Result:
@@ -116,20 +219,36 @@ Algorithm:
 7.	End
  
 Program:
+```
+#include<stdio.h>
+int main()
+{
+    int n,min;
+    scanf("%d",&n);
+    int len = n*2-1;
+    for(int i=0;i<len;i++)
+    {
+        for(int j=0;j<len;j++)
+        {
+            min = i<j ?i:j;
+            min = min<len-i-1? min:len-i-1;
+            min = min<len-j-1? min:len-j-1;
+            printf("%d ",n-min);
+        }
+        printf("\n"); 
+    }
+    return 0;
+}
+```
 
-//type your code here
+
+
 
 
 
 
 Output:
-
-
-//paste your output here
-
-
-
-
+![image](https://github.com/user-attachments/assets/d3fff268-5b47-4cfd-9d7b-44ec8e89c90a)
 
 
 Result:
@@ -155,21 +274,32 @@ o	Call the square() function and display the result.
 5.	End.
 
 Program:
+```
+#include <stdio.h>
+int square()
+{
+    int num; 
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    return num * num;
+}
 
-//type your code here
+int main() 
+{
+    int result;
+    result = square();
+    printf("Square of the number is: %d\n", result);
+    return 0;
+}
+
+```
+
 
 
 
 
 Output:
-
-
-//paste your output here
-
-
-
-
-
+![image](https://github.com/user-attachments/assets/f467f098-8ffc-4511-b681-76c2c4421115)
 
 Result:
 Thus, the program is verified successfully
